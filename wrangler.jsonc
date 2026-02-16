@@ -5,7 +5,6 @@
     "directory": "./dist"
   },
   "routes": [
-    { "pattern": "projectbagel.co.uk", "custom_domain": true },
-    { "pattern": "manchesterbagel.co.uk", "custom_domain": true }
+    { "pattern": "projectbagel.co.uk", "custom_domain": true }
   ]
 }
