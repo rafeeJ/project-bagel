@@ -3,5 +3,9 @@
   "compatibility_date": "2026-02-16",
   "assets": {
     "directory": "./dist"
-  }
+  },
+  "routes": [
+    { "pattern": "projectbagel.co.uk", "custom_domain": true },
+    { "pattern": "manchesterbagel.co.uk", "custom_domain": true }
+  ]
 }
