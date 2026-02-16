@@ -1,12 +1,60 @@
+---
+const canonicalURL = 'https://projectbagel.co.uk';
+const title = 'Project Bagel — Manchester Bagels';
+const description = 'Project Bagel. Fresh, hand-crafted bagels in Manchester.';
+const ogImage = `${canonicalURL}/og-image.webp`;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Primary SEO -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+		<meta name="robots" content="index, follow" />
+		<meta name="theme-color" content="#d4952a" />
+
+		<!-- Favicon -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" href="/favicon.ico" sizes="32x32" />
+		<link rel="apple-touch-icon" href="/favicon.svg" />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:locale" content="en_GB" />
+		<meta property="og:site_name" content="Project Bagel" />
+
+		<!-- Twitter / X -->
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+
+		<!-- Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "FoodEstablishment",
+			"name": "Project Bagel",
+			"url": canonicalURL,
+			"description": description,
+			"image": ogImage,
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Manchester",
+				"addressCountry": "GB"
+			},
+			"servesCuisine": "Bagels"
+		})} />
+
 		<meta name="generator" content={Astro.generator} />
-		<title>project bagel</title>
 	</head>
 	<body>
 		<slot />
