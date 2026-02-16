@@ -1,32 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import bagelImage from '../assets/bagel.webp';
 ---
 
 <Layout>
 	<main class="landing">
 		<div class="scene">
 			<div class="bagel-wrapper">
-				<div class="bagel">
-					<div class="bagel-body">
-						<div class="bagel-outer"></div>
-						<div class="bagel-hole"></div>
-						<div class="seed seed-1"></div>
-						<div class="seed seed-2"></div>
-						<div class="seed seed-3"></div>
-						<div class="seed seed-4"></div>
-						<div class="seed seed-5"></div>
-						<div class="seed seed-6"></div>
-						<div class="seed seed-7"></div>
-						<div class="seed seed-8"></div>
-					</div>
-				</div>
+				<img src={bagelImage.src} alt="An everything bagel" class="bagel" />
 			</div>
 			<div class="shadow"></div>
 		</div>
 
 		<div class="text-block">
 			<h1 class="title">project bagel</h1>
-			<p class="loading">loading<span class="dots"></span></p>
+			<p class="subtitle">loading<span class="dots"></span></p>
 		</div>
 	</main>
 </Layout>
@@ -39,180 +27,69 @@ import Layout from '../layouts/Layout.astro';
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		background: #f5f0e8;
-		position: relative;
-		gap: 2rem;
-	}
-
-	/* Subtle noise texture */
-	.landing::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-		pointer-events: none;
-		z-index: 0;
+		background: #f4efe6;
+		gap: 2.5rem;
 	}
 
 	.scene {
-		position: relative;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		z-index: 1;
 	}
 
-	/* Bagel rotation wrapper */
 	.bagel-wrapper {
 		animation: float 3s ease-in-out infinite;
 	}
 
 	.bagel {
-		width: 180px;
-		height: 180px;
-		animation: spin 4s linear infinite;
-		filter: drop-shadow(0 4px 12px rgba(139, 90, 43, 0.15));
+		width: 200px;
+		height: 200px;
+		object-fit: contain;
+		animation: spin 6s linear infinite;
+		filter: drop-shadow(0 8px 24px rgba(80, 50, 20, 0.2));
 	}
 
-	.bagel-body {
-		width: 100%;
-		height: 100%;
-		position: relative;
-	}
-
-	/* Outer ring */
-	.bagel-outer {
-		width: 180px;
-		height: 180px;
-		border-radius: 50%;
-		background: radial-gradient(
-			ellipse at 35% 30%,
-			#e8b84b 0%,
-			#d4952a 25%,
-			#c4842a 50%,
-			#b07328 70%,
-			#9a6220 100%
-		);
-		position: absolute;
-		top: 0;
-		left: 0;
-		box-shadow:
-			inset 0 -8px 20px rgba(90, 50, 10, 0.3),
-			inset 0 8px 20px rgba(255, 220, 140, 0.25),
-			0 2px 8px rgba(120, 70, 20, 0.2);
-	}
-
-	/* Baked highlights */
-	.bagel-outer::before {
-		content: '';
-		position: absolute;
-		width: 60%;
-		height: 40%;
-		top: 8%;
-		left: 15%;
-		border-radius: 50%;
-		background: radial-gradient(
-			ellipse,
-			rgba(245, 210, 130, 0.5) 0%,
-			transparent 70%
-		);
-	}
-
-	/* Inner hole */
-	.bagel-hole {
-		width: 56px;
-		height: 56px;
-		border-radius: 50%;
-		background: #f5f0e8;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		box-shadow:
-			inset 0 3px 10px rgba(139, 90, 43, 0.35),
-			inset 0 -2px 6px rgba(255, 220, 160, 0.15);
-	}
-
-	.bagel-hole::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		border-radius: 50%;
-		background: radial-gradient(
-			ellipse at 50% 60%,
-			rgba(120, 70, 20, 0.08) 0%,
-			transparent 70%
-		);
-	}
-
-	/* Sesame seeds */
-	.seed {
-		position: absolute;
-		width: 8px;
-		height: 5px;
-		background: linear-gradient(135deg, #f5e6c8, #e8d5a8);
-		border-radius: 50%;
-		box-shadow: 0 1px 2px rgba(90, 50, 10, 0.2);
-	}
-
-	.seed-1 { top: 18%; left: 52%; transform: rotate(25deg); }
-	.seed-2 { top: 28%; left: 72%; transform: rotate(-15deg); }
-	.seed-3 { top: 52%; left: 82%; transform: rotate(60deg); }
-	.seed-4 { top: 72%; left: 68%; transform: rotate(-40deg); }
-	.seed-5 { top: 78%; left: 40%; transform: rotate(10deg); }
-	.seed-6 { top: 62%; left: 14%; transform: rotate(-55deg); }
-	.seed-7 { top: 38%; left: 10%; transform: rotate(35deg); }
-	.seed-8 { top: 15%; left: 32%; transform: rotate(-20deg); }
-
-	/* Ground shadow */
 	.shadow {
 		width: 120px;
-		height: 16px;
+		height: 14px;
 		border-radius: 50%;
 		background: radial-gradient(
 			ellipse,
-			rgba(139, 90, 43, 0.12) 0%,
+			rgba(80, 50, 20, 0.1) 0%,
 			transparent 70%
 		);
-		margin-top: 1rem;
+		margin-top: 1.2rem;
 		animation: shadow-pulse 3s ease-in-out infinite;
 	}
 
-	/* Text block */
 	.text-block {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 0.6rem;
-		z-index: 1;
-		animation: fade-in 1.2s ease-out 0.3s both;
+		gap: 0.5rem;
+		animation: fade-in 1s ease-out 0.2s both;
 	}
 
 	.title {
-		font-family: 'Playfair Display', Georgia, serif;
-		font-weight: 400;
-		font-style: italic;
+		font-family: Georgia, 'Times New Roman', serif;
+		font-weight: normal;
 		font-size: 2rem;
-		letter-spacing: 0.04em;
-		color: #4a3520;
+		letter-spacing: 0.03em;
+		color: #3a2a18;
 	}
 
-	.loading {
-		font-family: 'DM Mono', 'Courier New', monospace;
-		font-weight: 300;
+	.subtitle {
+		font-family: Georgia, 'Times New Roman', serif;
 		font-size: 0.85rem;
-		letter-spacing: 0.15em;
-		color: #9a8570;
-		text-transform: lowercase;
+		letter-spacing: 0.1em;
+		color: #9a8a78;
 	}
 
-	/* Animated dots */
 	.dots::after {
 		content: '';
-		animation: dots 1.5s steps(4, end) infinite;
+		animation: dots 5s steps(4, end) infinite;
 	}
 
-	/* Keyframes */
 	@keyframes spin {
 		from { transform: rotate(0deg); }
 		to { transform: rotate(360deg); }
@@ -220,18 +97,12 @@ import Layout from '../layouts/Layout.astro';
 
 	@keyframes float {
 		0%, 100% { transform: translateY(0); }
-		50% { transform: translateY(-12px); }
+		50% { transform: translateY(-10px); }
 	}
 
 	@keyframes shadow-pulse {
-		0%, 100% {
-			transform: scaleX(1);
-			opacity: 1;
-		}
-		50% {
-			transform: scaleX(0.8);
-			opacity: 0.6;
-		}
+		0%, 100% { transform: scaleX(1); opacity: 1; }
+		50% { transform: scaleX(0.8); opacity: 0.5; }
 	}
 
 	@keyframes dots {
@@ -243,13 +114,7 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	@keyframes fade-in {
-		from {
-			opacity: 0;
-			transform: translateY(10px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
+		from { opacity: 0; transform: translateY(8px); }
+		to { opacity: 1; transform: translateY(0); }
 	}
 </style>
